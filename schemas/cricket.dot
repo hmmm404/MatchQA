@@ -1,0 +1,20 @@
+digraph ERD {
+    node [shape=record];
+    Event [label="{Event (name)}"];
+    Match [label="{Match (stage, city, date, number, type, venue)}"];
+    Team [label="{Team (name)}"];
+    Player [label="{Player (name)}"];
+    Outcome [label="{Outcome (by_wickets, winner, by_balls_remaining)}"];
+    Innings [label="{Innings (team)}"];
+    Over [label="{Over (number, bowler)}"];
+    Delivery [label="{Delivery (batter, non_striker, runs_batter, runs_total, runs_extras)}"];
+    Dismissal [label="{Dismissal (kind, player_out)}"];
+    Event -> Match [label="HAS_MATCH"];
+    Match -> Outcome [label="HAS_OUTCOME"];
+    Match -> Innings [label="HAS_INNINGS"];
+    Team -> Match [label="PARTICIPATED_IN"];
+    Team -> Player [label="CONTAINS"];
+    Innings -> Over [label="HAS_OVERS"];
+    Over -> Delivery [label="HAS_DELIVERY"];
+    Delivery -> Dismissal [label="HAS_DISMISSAL"];
+}
